@@ -44,18 +44,18 @@ class MisBudgetByAccountItem(models.Model):
         check_company=True,
     )
 
-    _sql_constraints = [
-        (
-            "credit_debit1",
+    _constraints = [
+        models.Constraint(
             "CHECK (credit*debit=0)",
             "Wrong credit or debit value in budget item! "
             "Credit or debit should be zero.",
+            "credit_debit1",
         ),
-        (
-            "credit_debit2",
+        models.Constraint(
             "CHECK (credit+debit>=0)",
             "Wrong credit or debit value in budget item! "
             "Credit and debit should be positive.",
+            "credit_debit2",
         ),
     ]
 
