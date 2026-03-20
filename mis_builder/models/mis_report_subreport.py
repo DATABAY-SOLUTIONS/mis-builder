@@ -31,17 +31,17 @@ class MisReportSubReport(models.Model):
         ondelete="restrict",
     )
 
-    _sql_constraints = [
-        (
-            "name_unique",
+    _constraints = [
+        models.Constraint(
             "unique(name, report_id)",
             "Subreport name should be unique by report",
+            "name_unique",
         ),
-        (
-            "subreport_unique",
+        models.Constraint(
             "unique(subreport_id, report_id)",
             "Should not include the same report more than once as sub report "
             "of a given report",
+            "subreport_unique",
         ),
     ]
 

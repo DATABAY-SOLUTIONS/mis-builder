@@ -133,8 +133,12 @@ class MisReportKpiStyle(models.Model):
     hide_always_inherit = fields.Boolean(default=True)
     hide_always = fields.Boolean(default=False)
 
-    _sql_constraints = [
-        ("style_name_uniq", "unique(name)", "Style name should be unique")
+    _constraints = [
+        models.Constraint(
+            "unique(name)",
+            "Style name should be unique",
+            "style_name_uniq",
+        ),
     ]
 
     description = fields.Html(

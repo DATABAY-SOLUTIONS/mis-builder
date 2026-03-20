@@ -289,17 +289,21 @@ class MisReportInstancePeriod(models.Model):
 
     _order = "sequence, id"
 
-    _sql_constraints = [
-        ("duration", "CHECK (duration>0)", "Wrong duration, it must be positive!"),
-        (
-            "normalize_factor",
+    _constraints = [
+        models.Constraint(
+            "CHECK (duration>0)",
+            "Wrong duration, it must be positive!",
+            "duration",
+        ),
+        models.Constraint(
             "CHECK (normalize_factor>0)",
             "Wrong normalize factor, it must be positive!",
+            "normalize_factor",
         ),
-        (
-            "name_unique",
+        models.Constraint(
             "unique(name, report_instance_id)",
             "Period name should be unique by report",
+            "name_unique",
         ),
     ]
 

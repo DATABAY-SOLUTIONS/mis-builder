@@ -292,12 +292,12 @@ class MisReportKpiExpression(models.Model):
     # TODO FIXME set readonly=True when onchange('subkpi_ids') below works
     subkpi_id = fields.Many2one("mis.report.subkpi", readonly=False, ondelete="cascade")
 
-    _sql_constraints = [
-        (
-            "subkpi_kpi_unique",
+    _constraints = [
+        models.Constraint(
             "unique(subkpi_id, kpi_id)",
             "Sub KPI must be used once and only once for each KPI",
-        )
+            "subkpi_kpi_unique",
+        ),
     ]
 
     @api.depends(
