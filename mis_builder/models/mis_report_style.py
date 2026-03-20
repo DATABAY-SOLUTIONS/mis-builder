@@ -137,7 +137,6 @@ class MisReportKpiStyle(models.Model):
         models.Constraint(
             "unique(name)",
             "Style name should be unique",
-            "style_name_uniq",
         ),
     ]
 

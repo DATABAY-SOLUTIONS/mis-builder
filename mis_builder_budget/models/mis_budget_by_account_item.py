@@ -49,13 +49,11 @@ class MisBudgetByAccountItem(models.Model):
             "CHECK (credit*debit=0)",
             "Wrong credit or debit value in budget item! "
             "Credit or debit should be zero.",
-            "credit_debit1",
         ),
         models.Constraint(
             "CHECK (credit+debit>=0)",
             "Wrong credit or debit value in budget item! "
             "Credit and debit should be positive.",
-            "credit_debit2",
         ),
     ]
 

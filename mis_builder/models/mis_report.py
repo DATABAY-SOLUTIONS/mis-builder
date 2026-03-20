@@ -296,7 +296,6 @@ class MisReportKpiExpression(models.Model):
         models.Constraint(
             "unique(subkpi_id, kpi_id)",
             "Sub KPI must be used once and only once for each KPI",
-            "subkpi_kpi_unique",
         ),
     ]
 
